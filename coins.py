@@ -14,32 +14,42 @@ def gen_coins(heads='.', n=100):
 	return coins
 
 def flip_coins(coins, tails='·'):
-	flipped_coins = []
+    flipped_coins = []
 
-	for c in range(len(coins)):
-		flipped_coins.append(coins[c])
+    # Make list
+    for c in range(len(coins)):
+        flipped_coins.append(coins[c])
 
-	for i in range(len(flipped_coins)):
-		for n in range(len(flipped_coins)):
-			if i == 0:
-				flipped_coins[i] = tails
-			try:
-				if n % i == 0:
-					flipped_coins[i] = tails
-					#print((n % i), end='')
-			except ZeroDivisionError:
-				pass
+    print(flipped_coins)
 
-	return ''.join(flipped_coins)
+    """
+        for i in range(len(flipped_coins)):
+            #print(i, end='')
+            for n in range(len(flipped_coins)):
+                if i == 0:
+                    flipped_coins[i] = tails
+                    try:
+                        if n % i == 0:
+                            flipped_coins[i] = tails
+                            #print((n % i), end='')
+                    except ZeroDivisionError:
+                        pass
+        print(''.join(flipped_coins))
+    return ''.join(flipped_coins)
+    """
+
+    for n in range(len(coins)):
+        print(flipped_coins[n])
+
 
 def main():
-	coins = gen_coins(heads='-')
-	print('')
-	print(coins)
+	coins = gen_coins(heads = '+', n = 3)
+	#print('')
+	#print(coins)
 
-	flipped_coins = flip_coins(coins, tails='+')
-	print('')
-	print(flipped_coins)
+	flipped_coins = flip_coins(coins, tails = '-')
+	#print('')
+	#print(flipped_coins)
 
 if __name__ == '__main__':
     main()
