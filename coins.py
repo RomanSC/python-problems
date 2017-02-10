@@ -8,30 +8,38 @@
     flip over all the even-numbered coins, because theyre multiples of 2. Then you'll flip coins No. 3, 6, 9, 12 and so on.
 
 """
-import time
+def gen_coins(heads='.', n=100):
+	for i in range(1, n + 1):
+		coins = heads * n
+	return coins
 
-def coin_flip(token, fill):
-    # print 100 "coins"
-    for i in range(1, 100 + 1):
-        print(fill, end='')
-    print('')
-    # i becomes the function
-    # in this unkown mathematical
-    # expression
-    for i in range(1, 100 + 1):
-        # start flipping to heads
-        for n in range(1, 100 + 1):
-            if n % i == 0:
-                print(token, end='')
-            else:
-                print(fill, end='')
-        print('')
-        time.sleep(0.005)
+def flip_coins(coins, tails='·'):
+	flipped_coins = []
+
+	for c in range(len(coins)):
+		flipped_coins.append(coins[c])
+
+	for i in range(len(flipped_coins)):
+		for n in range(len(flipped_coins)):
+			if i == 0:
+				flipped_coins[i] = tails
+			try:
+				if n % i == 0:
+					flipped_coins[i] = tails
+					#print((n % i), end='')
+			except ZeroDivisionError:
+				pass
+
+	return ''.join(flipped_coins)
 
 def main():
-    token = '·'; fill = ' '
+	coins = gen_coins(heads='-')
+	print('')
+	print(coins)
 
-    coin_flip(token, fill)
+	flipped_coins = flip_coins(coins, tails='+')
+	print('')
+	print(flipped_coins)
 
 if __name__ == '__main__':
     main()
