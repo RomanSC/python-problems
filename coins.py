@@ -8,8 +8,6 @@
     flip over all the even-numbered coins, because theyre multiples of 2. Then you'll flip coins No. 3, 6, 9, 12 and so on.
 
 """
-import termcolor
-
 def flip_coins(n, all_flips=False):
     coins = [x for x in range(n + 1)]
     coins[0] = None
